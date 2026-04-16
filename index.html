@@ -1,1 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Thread Sense is a capstone wardrobe planning app that helps users organize closet photos, build outfits, save favorite looks, and explore AI styling guidance." />
+  <title>Thread Sense | Capstone Landing Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#08111a;--bg2:#102033;--card:rgba(14,25,38,.86);--line:rgba(255,255,255,.12);--text:#f6efe7;--muted:#c9c0b5;--accent:#d8a368;--accent2:#6fc3b6;--max:1120px}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:"Sora","Segoe UI",sans-serif;color:var(--text);background:radial-gradient(circle at 15% 20%,rgba(111,195,182,.16),transparent 24%),radial-gradient(circle at 85% 0,rgba(216,163,104,.15),transparent 30%),linear-gradient(180deg,#08111a 0%,#0c1724 45%,#09111a 100%);overflow-x:hidden}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:90px 90px;mask-image:linear-gradient(180deg,rgba(0,0,0,.32),transparent 84%);opacity:.25}
+    a{color:inherit;text-decoration:none}
+    .shell{width:min(var(--max),calc(100% - 28px));margin:0 auto;padding:24px 0 56px;position:relative;z-index:1}
+    .panel,.card,.step,.fill-card,.stat{background:var(--card);border:1px solid var(--line);border-radius:24px;backdrop-filter:blur(14px);box-shadow:0 18px 48px rgba(0,0,0,.25)}
+    .topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;padding-bottom:28px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700}
+    .mark{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#09111a;font-weight:800}
+    .brand small{display:block;color:var(--muted);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+    .links{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+    .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:24px;align-items:start}
+    .tag,.label{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2)}
+    .tag{padding:8px 12px;border-radius:999px;border:1px solid rgba(111,195,182,.26);background:rgba(111,195,182,.08);color:var(--text)}
+    h1{margin:16px 0 14px;font-size:clamp(42px,7vw,80px);line-height:.94;letter-spacing:-.06em;max-width:10ch}
+    h1 span{display:block;color:var(--accent);font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:600;letter-spacing:-.03em}
+    .hero p,.section-head p,.card p,.step p,.fill-card p,.fill-card li{color:var(--muted);line-height:1.75}
+    .hero-copy .meta{margin:16px 0 0;color:var(--accent2);font-weight:600}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 14px}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:999px;font-size:14px;font-weight:700}
+    .button.primary{background:linear-gradient(135deg,var(--accent),#f2cfaa);color:#09111a}
+    .button.secondary{border:1px solid var(--line);background:rgba(255,255,255,.03)}
+    .note{font-size:13px;color:var(--muted)}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+    .stat{padding:16px}
+    .stat strong{display:block;margin-bottom:8px;font-size:18px}
+    .stat span,.mini-card span{font-size:13px;color:var(--muted);line-height:1.65}
+    .summary{padding:22px}
+    .summary h2,.card h3,.step h3,.fill-card h3,.closing h3{margin:8px 0 10px;font-size:20px;line-height:1.45}
+    .mini-grid,.grid{display:grid;gap:14px}.mini-grid{grid-template-columns:repeat(2,1fr);margin-top:16px}
+    .mini-card{padding:14px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+    .mini-card strong{display:block;margin-bottom:8px;font-size:14px}
+    .section{margin-top:72px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:18px}
+    .section-head h2{margin:8px 0 0;font-size:clamp(30px,4vw,44px);letter-spacing:-.04em}.section-head p{max-width:520px;margin:0}
+    .grid.four{grid-template-columns:repeat(4,1fr)} .grid.flow{grid-template-columns:repeat(4,1fr)} .grid.template{grid-template-columns:repeat(2,1fr)}
+    .card,.step,.fill-card,.closing{padding:22px} .fill-card{border-style:dashed;border-color:rgba(216,163,104,.34)} .fill-card.wide{grid-column:span 2}
+    .num{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:14px;background:rgba(111,195,182,.12);border:1px solid rgba(111,195,182,.24);color:var(--accent2);font-weight:800;margin-bottom:14px}
+    .list{margin:12px 0 0;padding-left:18px} .tip{margin-top:14px;padding:14px 16px;border-radius:16px;background:rgba(111,195,182,.08);border:1px solid rgba(111,195,182,.2);font-size:14px;color:var(--muted)}
+    .closing{margin-top:20px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
+    .footer{text-align:center;margin-top:16px;font-size:13px;color:var(--muted)}
+    @media (max-width:960px){.hero-grid,.grid.four,.grid.flow,.grid.template,.closing{grid-template-columns:1fr}.fill-card.wide{grid-column:span 1}.stats{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:10px}.links{gap:12px}}
+    @media (max-width:640px){.topbar{display:block}.links{margin-top:14px}.actions{flex-direction:column}.button{width:100%}.mini-grid{grid-template-columns:1fr}h1{max-width:none;font-size:clamp(36px,14vw,58px)}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav class="topbar">
+      <div class="brand"><div class="mark">TS</div><div>Thread Sense<small>Capstone presentation site</small></div></div>
+      <div class="links"><a href="#overview">Overview</a><a href="#features">Features</a><a href="#flow">Demo Flow</a><a href="#template">Team Template</a></div>
+    </nav>
 
+    <header class="hero-grid" id="top">
+      <section class="hero-copy">
+        <span class="tag">Wardrobe planning mobile app</span>
+        <p class="meta">Presented by [Team Name] for [Course / Section]</p>
+        <h1>Turn closet photos <span>into outfits you can build and save.</span></h1>
+        <p>Thread Sense is a wardrobe planning app that helps users upload clothing images, organize items by category, build looks from selected pieces, save favorite combinations to albums, and use an AI stylist chat for extra guidance based on what they already own.</p>
+        <div class="actions"><a class="button primary" href="#template">Fill In Team Details</a><a class="button secondary" href="#features">Explore the App</a></div>
+        <p class="note">Replace every bracketed section before presenting. This page is designed to work as both a landing page and a capstone outline.</p>
+        <div class="stats">
+          <article class="stat"><strong>11 categories</strong><span>Tops, bottoms, dresses, shoes, hats, bags, and accessories can all be organized visually.</span></article>
+          <article class="stat"><strong>Saved albums</strong><span>Users can keep, rename, reorder, and revisit outfit collections after building a look.</span></article>
+          <article class="stat"><strong>AI stylist</strong><span>Users can ask for outfit ideas and attach closet photos for more specific guidance.</span></article>
+        </div>
+      </section>
+
+      <aside class="panel summary">
+        <span class="label">App Snapshot</span>
+        <h2>What the app does</h2>
+        <p>Thread Sense starts with a user's real wardrobe instead of random fashion suggestions. It turns closet photos into a digital system for planning outfits, saving ideas, and reducing decision fatigue.</p>
+        <div class="mini-grid">
+          <article class="mini-card"><strong>Digital Closet</strong><span>Upload and sort wardrobe photos into clear categories.</span></article>
+          <article class="mini-card"><strong>Outfit Picker</strong><span>Combine selected items into complete looks.</span></article>
+          <article class="mini-card"><strong>Saved Looks</strong><span>Store favorite outfits in named albums.</span></article>
+          <article class="mini-card"><strong>AI Stylist</strong><span>Ask for ideas using the clothes already in the closet.</span></article>
+        </div>
+      </aside>
+    </header>
+
+    <main>
+      <section class="section" id="overview">
+        <div class="section-head">
+          <div><span class="label">Overview</span><h2>What makes Thread Sense useful</h2></div>
+          <p>The app solves a real daily problem: many people know what they own but still struggle to assemble outfits quickly or remember combinations they liked before.</p>
+        </div>
+        <div class="grid template">
+          <article class="card">
+            <span class="label">Why It Matters</span>
+            <h3>A practical answer to decision fatigue.</h3>
+            <p>Thread Sense helps users make better use of clothes they already own. Instead of starting from scratch each morning, they can build from a visual closet, reuse saved looks, and make faster outfit decisions.</p>
+          </article>
+          <article class="card">
+            <span class="label">Capstone Strength</span>
+            <h3>A complete product story in one app.</h3>
+            <p>The project combines mobile UI, image-based organization, saved data, and AI-assisted interaction. That makes it strong for a capstone because the concept is easy to understand and the implementation touches multiple technical areas.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <div class="section-head">
+          <div><span class="label">Features</span><h2>Core parts of the product</h2></div>
+          <p>These are the main workflows your team can talk through during a class presentation or live demo.</p>
+        </div>
+        <div class="grid four">
+          <article class="card"><span class="label">01. Closet</span><h3>Upload and categorize items.</h3><p>Users add wardrobe photos from the camera or library, then organize those pieces into categories for easier browsing.</p></article>
+          <article class="card"><span class="label">02. Picker</span><h3>Build outfits from selected pieces.</h3><p>The outfit picker lets users swipe through options and combine tops, bottoms, dresses, shoes, jackets, and accessories.</p></article>
+          <article class="card"><span class="label">03. Albums</span><h3>Save looks for later.</h3><p>Finished outfits can be saved into named albums so users can revisit, edit, and reorder their favorite combinations.</p></article>
+          <article class="card"><span class="label">04. AI Stylist</span><h3>Ask for extra outfit guidance.</h3><p>The AI stylist chat adds a conversational layer where users can request ideas and attach closet photos for context.</p></article></div>
+      </section>
+      <section class="section" id="flow">
+        <div class="section-head">
+          <div><span class="label">Demo Flow</span><h2>A clear way to present the app</h2></div>
+          <p>This order keeps the story simple: define the problem, show the closet flow, build an outfit, then finish with saved looks and AI support.</p>
+        </div>
+        <div class="grid flow">
+          <article class="step"><div class="num">01</div><h3>Explain the problem.</h3><p>Start with the pain point: users spend time deciding what to wear, forget good combinations, and underuse clothing they already own.</p></article>
+          <article class="step"><div class="num">02</div><h3>Show closet setup.</h3><p>Demonstrate uploading clothing, assigning categories, and choosing which items should appear in the outfit picker.</p></article>
+          <article class="step"><div class="num">03</div><h3>Build and save a look.</h3><p>Create an outfit in the picker and save it to an album to show how the app supports repeat use, not just one-time browsing.</p></article>
+          <article class="step"><div class="num">04</div><h3>Finish with AI support.</h3><p>Open AI Stylist, attach closet photos, and show how conversational guidance makes the app feel more personal and practical.</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="template">
+        <div class="section-head">
+          <div><span class="label">Team Template</span><h2>General format your team can fill out</h2></div>
+          <p>Keep the sections you need, cut the ones you do not, and replace the bracketed prompts with your real project details before class.</p>
+        </div>
+        <div class="grid template">
+          <article class="fill-card"><span class="label">Project Basics</span><h3>Who you are and what this project is.</h3><ul class="list"><li>[Team Name]</li><li>[Course / Section / Semester]</li><li>[Instructor or Advisor]</li><li>[Presentation Date]</li><li>[Demo Link or QR Code]</li></ul></article>
+          <article class="fill-card"><span class="label">Team Roles</span><h3>Who handled what.</h3><ul class="list"><li>[Name] - [Frontend / UI / UX]</li><li>[Name] - [Backend / Database / Auth]</li><li>[Name] - [AI / Logic / Integrations]</li><li>[Name] - [Testing / Docs / Presentation]</li></ul></article>
+          <article class="fill-card wide"><span class="label">Problem Statement</span><h3>What user problem are you solving?</h3><p>[Explain the frustration or inefficiency your app addresses. Example: users often waste time choosing outfits, forget good combinations, and underuse clothes they already own.]</p><div class="tip">Fill-in prompt: [Who has this problem?] [When does it happen?] [Why is the current process frustrating?]</div></article>
+          <article class="fill-card wide"><span class="label">Solution Summary</span><h3>How does Thread Sense solve that problem?</h3><p>[Describe your solution in 3 to 5 sentences. Mention closet upload, outfit building, saved albums, and AI stylist support if those are part of your demo.]</p><div class="tip">Fill-in prompt: [What is the core workflow?] [What makes your app more useful than doing this manually?]</div></article>
+          <article class="fill-card"><span class="label">Tech Stack</span><h3>What powers the project?</h3><ul class="list"><li>Frontend: [Expo / React Native / TypeScript]</li><li>Backend or Data: [Supabase / Storage / Auth / Database]</li><li>AI or Logic: [AI Stylist flow or recommendation logic]</li><li>Other Tools: [Design, testing, deployment, analytics]</li></ul></article>
+          <article class="fill-card"><span class="label">Demo Plan</span><h3>What will you show live?</h3><ul class="list"><li>[Introduce the problem]</li><li>[Show closet upload and categories]</li><li>[Build an outfit in the picker]</li><li>[Save the outfit to an album]</li><li>[Show AI Stylist support]</li></ul></article>
+          <article class="fill-card"><span class="label">Results / Feedback</span><h3>What did you learn or validate?</h3><p>[Add testing notes, user feedback, feature validation, lessons learned, or what changed during development.]</p></article>
+          <article class="fill-card"><span class="label">Future Work</span><h3>What comes next after the capstone?</h3><p>[List the next features or improvements, such as smarter recommendations, outfit history, calendar planning, sharing, or deployment.]</p></article>
+        </div>
+        <article class="closing"><div><span class="label">Presentation Close</span><h3>Thread Sense is a strong capstone because it is practical, visual, and easy to explain.</h3><p>It tells a complete product story from problem to workflow to value: organize a closet, build outfits, save proven looks, and support decisions with AI guidance.</p></div><a class="button primary" href="#top">Back to Top</a></article>
+      </section>
+    </main>
+
+    <p class="footer">Thread Sense capstone landing page template. Replace bracketed content before sharing with your class.</p>
+  </div>
+</body>
+</html>
