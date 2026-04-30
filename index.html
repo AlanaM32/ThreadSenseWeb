@@ -54,12 +54,12 @@
     .footer{text-align:center;margin-top:16px;font-size:13px;color:var(--muted)}
     .card-img {
       width: 100%;
-      height: auto;
-      max-height: 400px;
-      object-fit: contain;
-      background: #0f0f14;  /* subtle backdrop */
-      padding: 8px;
-      border-radius: 16px;
+      height: auto;        /* keeps full image */
+      max-height: 400px;   /* prevents it from being huge */
+      object-fit: contain; /* shows entire image */
+      border-radius: 14px;
+      margin-bottom: 12px;
+      display: block;
       transition: transform 0.3s ease;
     }
     .card:hover .card-img {
